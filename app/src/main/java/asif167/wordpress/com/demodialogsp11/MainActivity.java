@@ -43,7 +43,35 @@ public class MainActivity extends AppCompatActivity {
             AlertDialog alertDialog = builder.create();
             alertDialog.show();
         } else if (item.getItemId() == R.id.itemSimpleList) {
-        } else if (item.getItemId() == R.id.itemPassPhrase) {
+
+            String [] list = new String[] { "Monday", "Tuesday", "Wednesday",
+                    "Thursday", "Friday" };
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Which is your freest weekday?")
+                    // Set the list of items easily by just supplying an
+                    //  array of the items
+                    .setItems(list, new DialogInterface.OnClickListener() {
+                        // The parameter "which" is the item index
+                        // clicked, starting from 0
+                        public void onClick(DialogInterface dialog, int which) {
+                            if (which == 0) {
+                                Toast.makeText(MainActivity.this, "You said Monday",
+                                        Toast.LENGTH_LONG).show();
+                            } else if (which == 4) {
+                                Toast.makeText(MainActivity.this, "You said Friday",
+                                        Toast.LENGTH_LONG).show();
+                            } else {
+                                Toast.makeText(MainActivity.this, "You said middle of the week",
+                                        Toast.LENGTH_LONG).show();
+                            }
+                        }
+                    });
+            AlertDialog alertDialog = builder.create();
+            alertDialog.show();
+
+        }
+        else if (item.getItemId() == R.id.itemPassPhrase) {
         }
         return super.onOptionsItemSelected(item);
     }
